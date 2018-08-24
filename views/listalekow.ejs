@@ -1,0 +1,48 @@
+<% include partials/header %>
+
+<div class="row">
+        
+
+    <% include partials/sidenav %>
+
+    
+    <div class="col-4">
+        <main>
+            <article >
+                    
+                <h2>Lista lekow wypożyczonych</h2>
+                
+                <table class="table table-sm">
+                        <thead class="thead-dark">
+                          <tr>
+                            <th scope="col">No</th>
+                            <th scope="col">Nazwa leku</th>
+                            <th scope="col" class="text-center">Ilość opakowań</th>
+                          </tr>
+                        </thead>
+                
+                <% doc.forEach((doc, index)=>{ %>         
+                   <% doc.lekipoz.forEach((doc2)=>{%>
+                        
+                    <tbody>
+                        <tr>
+                        <th scope="row"><%=numercol++%></th>
+                        <td><%=doc2.nazwaleku%></td>
+                        <td class="text-center"><%=doc2.ilosc%></td>                                
+                        </tr>
+
+                    <% })%>
+                <%})%>
+                                 
+                    </tbody>
+                </table>
+
+
+            </article>
+        </main>        
+    </div>
+</div>
+    
+
+
+<% include partials/footer %>
