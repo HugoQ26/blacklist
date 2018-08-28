@@ -1,0 +1,65 @@
+<% include partials/header %>
+
+<div class="row">
+        
+
+    <% include partials/sidenav %>
+
+    
+        <div class="col-7">
+                <h3><strong>Lista osob ktore pozyczyly leki</strong></h3>
+                        <% doc.forEach((doc, index)=>{ %>
+                        <div class="row bg-info border rounded">
+                                <div class="col"><h5>p. <%=doc.name%></h5></div>
+                        </div>
+                        <div class="row border-bottom rounded border-info">
+                                <div class="col-1 tex"> <h6> No</h6></div>
+                                <div class="col-2"> <h6> Nazwa leku</h6></div>
+                                <div class="col-2"> <h6> Ilość opakowan</h6></div>
+                                <div class="col-1"> <h6> Wydał</h6></div>
+                                <div class="col-3"> <h6> Data wydania</h6></div>
+                                <div class="col text-center"> <h6> Uwagi</h6></div>      
+                        </div>
+                        <% doc.lekipoz.forEach((doc2, index, arr)=>{%>   
+                <div class="row">
+                        <div class="col-1"><%=numercol++%></div>
+                        <div class="col-2"><%=doc2.nazwaleku%></div>
+                        <div class="col-2 text-center"><%=doc2.ilosc%></div>
+                        
+                        <% if (!doc2.wydajacy) { %>
+                                <div class="col-1"><%=arr[index-1].wydajacy%></div>
+                        <% } else { %>
+                                <div class="col-1"><%=doc2.wydajacy%></div>
+                        <% } %>
+                        
+                        
+
+                        <% if (!doc2.datawydania) { %>
+                                <div class="col-3"><%=arr[index-1].datawydania%></div>
+                        <% } else { %>
+                                <div class="col-3"><%=doc2.datawydania%></div>
+                         <% } %>
+                         
+                         
+                         <% if (!doc2.uwagi) { %>
+                                 <div class="col text-center"><%=arr[index-1].uwagi%></div>
+                         <% } else { %>
+                                <div class="col text-center"><%=doc2.uwagi%></div>
+                          <% } %>
+
+
+                                                
+                </div>
+
+                
+                <%})%>
+                <%numercol=1%>
+                <%})%>
+
+
+        </div>
+</div>
+    
+
+
+<% include partials/footer %>
