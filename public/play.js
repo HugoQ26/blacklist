@@ -8,6 +8,7 @@ $(()=>{
     var value;
     var nr = 1;
     
+    $('[data-toggle="tooltip"]').tooltip();
 
     $('button.btn.btn-primary.dodajlek').on('click', ()=>{
         

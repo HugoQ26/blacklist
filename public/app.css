@@ -1,3 +1,10 @@
 body {
-    background-color: rgb(255, 234, 234);
+    background-color: #ffffff;
+    max-width: 1280px;
+    margin: auto;
 }
+
+#addpatient, #listadluz, #listalekow, #patientedit, #patientdrugslist {
+    background-color: #80808017;    
+}
+

@@ -1,45 +1,63 @@
 <% include partials/header %>
 
-<div class="row">
-        
+    <div class="row">
 
-    <% include partials/sidenav %>
 
-    
-    <div class="col-3">
-        <main>
-            <article >
-                <h3><strong>Lista lekow wypożyczonych</strong></h3> 
-                <div class="row bg-info border rounded">
-                    <div class="col-2"><h5>No</h5></div>
-                    <div class="col"><h5>Nazwa leku</h5></div>
-                    <div class="col-3"><h5>Ilość op.</h5></div>
-                    
-                </div>         
-                
-                <% doc.forEach((doc, index)=>{ %>         
-                   <% doc.lekipoz.forEach((doc2)=>{%>
-                        
-                    
-                        <div class="row border-bottom border-info rounded">
-                        <div class="col-2"> <h6> <%=numercol++%></h6></div>
-                        <div class="col"> <h6> <%=doc2.nazwaleku%></h6></div>
-                        <div class="col-4 text-center"> <h6> <%=doc2.ilosc%></h6></div>                                
+        <% include partials/sidenav %>
+
+
+            <div id="listalekow" class="col-5 shadow rounded">
+                <main>
+                    <article>
+                        <h3><strong>Lista lekow wypożyczonych</strong></h3>
+                        <div class="row bg-info border rounded">
+                            <div class="col-2">
+                                <h5>No</h5>
+                            </div>
+                            <div class="col">
+                                <h5>Nazwa leku</h5>
+                            </div>
+                            <div class="col-3">
+                                <h5>Ilość op.</h5>
+                            </div>
+
                         </div>
 
-                    <% })%>
-                <%})%>
-                                 
-                    
-                
+                        <% doc.forEach((doc, index)=>{ %>
+                            <% doc.lekipoz.forEach((doc2)=>{%>
 
-                
 
-            </article>
-        </main>        
+                                <div class="row border-bottom border-info rounded">
+                                    <div class="col-2">
+                                        <h6>
+                                            <%=numercol++%>
+                                        </h6>
+                                    </div>
+                                    <div class="col">
+                                        <h6>
+                                            <%=doc2.nazwaleku%>
+                                        </h6>
+                                    </div>
+                                    <div class="col-4 text-center">
+                                        <h6>
+                                            <%=doc2.ilosc%>
+                                        </h6>
+                                    </div>
+                                </div>
+
+                                <% })%>
+                                    <%})%>
+
+
+
+
+
+
+                    </article>
+                </main>
+            </div>
     </div>
-</div>
-    
 
 
-<% include partials/footer %>
+
+    <% include partials/footer %>

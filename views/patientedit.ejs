@@ -5,8 +5,9 @@
 
     <% include partials/sidenav %>
 
-    <div class="col-2"><h4 class="text-center"><strong>Wybierz osobe</strong></h4>
-        <div class="container border border-info rounded">
+    <div id="patientedit" class="col-3 rounded shadow">
+        <h4 class="text-center"><strong>Wybierz osobe</strong></h4>
+        <div class="container">
 
             <div class="row bg-info rounded mb-lg-3">
                 <h5 class="col-3 text-center">Lp</h5>
@@ -20,7 +21,7 @@
                         <div class="col form-check ml-lg-5">
                             <input class="form-check-input" type="radio" name="name" id="<%=doc.name%>" value="<%=doc.name%>" required>
                             <label class="form-check-label" for="<%=doc.name%>">
-                                <h6><%=doc.name%></h6>
+                                <h6 class="<%=doc.name%>"><%=doc.name%></h6>
                             </label>
                         </div>
                         
@@ -28,7 +29,7 @@
                         <!-- <h6 class="col text-center"><%=doc.name%></h6>         -->
                     </div>
                     <%})%>
-                    <button type="submit" class="btn btn-info mt-lg-2">Zatwierdz</button>
+                    <button type="submit" class="btn btn-info my-lg-2">Zatwierdz</button>
                 </div>
             </form>
         </div>

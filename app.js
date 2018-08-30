@@ -9,7 +9,7 @@ app.engine('html', engines.ejs);
 app.set('view engine', 'ejs');
 app.use(express.static('public'));
 
-
+var PORT = process.env.PORT || 3000;
 
 
 MongoClient.connect('mongodb://localhost:27017', (err, client) => {
@@ -33,14 +33,23 @@ MongoClient.connect('mongodb://localhost:27017', (err, client) => {
     })
 
     app.get('/addpatient', (req, res) => {
+        
         var datacala = new Date();
         var numercol = 0;
-        var data = `${datacala.toLocaleDateString()} o godz. ${datacala.toLocaleTimeString()}`;
-        res.render('addpatient', {
-            osobwypoz,
-            data,
-            numercol
+        var data = `${datacala.toLocaleDateString()}  ${datacala.toLocaleTimeString()}`;
+        db.collection('klienci').find({}).toArray((err, doc)=>{
+            console.log(doc);
+            
+            res.render('addpatient', {
+                osobwypoz,
+                data,
+                numercol,
+                doc
+            })
+           
         })
+        
+        
     })
 
 
@@ -147,7 +156,7 @@ MongoClient.connect('mongodb://localhost:27017', (err, client) => {
 
 
 
-app.listen(process.env.PORT || 3000, () => {
+app.listen(PORT, () => {
     console.log('Server is runing..');
 })
 

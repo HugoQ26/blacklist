@@ -1,52 +1,100 @@
-<div class="col-7">
+<div id="patientdrugslist" class="col mr-4 rounded shadow">
         <h3><strong>Lista lekow pożyczonych przez p. <%=osoba%></strong></h3>
-                <% doc.forEach((doc, index)=>{ %>
+        <% doc.forEach((doc, index)=>{ %>
                 <div class="row bg-info border rounded">
-                        <div class="col"><h5>p. <%=doc.name%></h5></div>
+                        <div class="col">
+                                <h5>p.
+                                        <%=doc.name%>
+                                </h5>
+                        </div>
                 </div>
-                <div class="row border-bottom rounded border-info">
-                        <div class="col-1 tex"> <h6> No</h6></div>
-                        <div class="col-3"> <h6> Nazwa leku</h6></div>
-                        <div class="col-1"> <h6> Ilość op.</h6></div>
-                        <div class="col-1"> <h6> Wydał</h6></div>
-                        <div class="col-3"> <h6> Data wydania</h6></div>
-                        <div class="col text-center"> <h6> Uwagi</h6></div>      
+                <div class="row border-bottom rounded border-info mb-2">
+                        <div class="col-1 p-0 text-center">
+                                <h6> No</h6>
+                        </div>
+                        <div class="col-3">
+                                <h6> Nazwa leku</h6>
+                        </div>
+                        <div class="col-1 text-center">
+                                <h6> Ilość</h6>
+                        </div>
+                        <div class="col-2">
+                                <h6> Wydał</h6>
+                        </div>
+                        <div class="col text-center">
+                                <h6> Data wydania</h6>
+                        </div>
+                        <div class="col text-center">
+                                <h6> Uwagi</h6>
+                        </div>
                 </div>
-                <% doc.lekipoz.forEach((doc2, index, arr)=>{%>   
-        <div class="row">
-                <div class="col-1"><%=numercol++%></div>
-                <div class="col-3"><%=doc2.nazwaleku%></div>
-                <div class="col-1 text-center"><%=doc2.ilosc%></div>
-                
-                <% if (!doc2.wydajacy) { %>
-                        <div class="col-1"><%=arr[index-1].wydajacy%></div>
-                <% } else { %>
-                        <div class="col-1"><%=doc2.wydajacy%></div>
-                <% } %>
-                
-                
-
-                <% if (!doc2.datawydania) { %>
-                        <div class="col-3"><%=arr[index-1].datawydania%></div>
-                <% } else { %>
-                        <div class="col-3"><%=doc2.datawydania%></div>
-                 <% } %>
-                 
-                 
-                 <% if (!doc2.uwagi) { %>
-                         <div class="col text-center"><%=arr[index-1].uwagi%></div>
-                 <% } else { %>
-                        <div class="col text-center"><%=doc2.uwagi%></div>
-                  <% } %>
-
-
+                <% doc.lekipoz.forEach((doc2, index, arr)=>{%>
+                        <div class="row">
+                                <div class="col-1 p-0 text-center">
+                                        <%=numercol++%>
+                                </div>
+                                <div class="col-3">
+                                                <!-- sformatowac buttona...................... -->
+                                        <button class="btn btn-info" data-toggle="tooltip" data-placement="left" title="Naciśnij aby skreślić lek <%=doc2.nazwaleku%> z listy"><%=doc2.nazwaleku%></button>            
+                                </div>
+                                <div class="col-1">
+                                                <input type="number" name="" class="form-control text-center p-0" id="ilosc" aria-describedby="basic-addon3"
+                                                autocomplete="off" min="1" max="<%=doc2.ilosc%>" value="<%=doc2.ilosc%>" required>
                                         
-        </div>
+                                        <!-- <%=doc2.ilosc%> -->
+                                </div>
+
+                                <% if (!doc2.wydajacy) { %>
+                                        <div class="col-2">
+                                                <%=arr[index-1].wydajacy%>
+                                        </div>
+                                        <% } else { %>
+                                                <div class="col-2">
+                                                        <%=doc2.wydajacy%>
+                                                </div>
+                                                <% } %>
+
+
+
+                                                        <% if (!doc2.datawydania) { %>
+                                                                <div class="col">
+                                                                        <%=arr[index-1].datawydania%>
+                                                                </div>
+                                                                <% } else { %>
+                                                                        <div class="col text-center">
+                                                                                <%=doc2.datawydania%>
+                                                                        </div>
+                                                                        <% } %>
+
+
+                                                                                <% if (doc2.uwagi) { %>
+                                                                                        <div class="col text-center">
+                                                                                                <%=doc2.uwagi%>
+                                                                                        </div>
+                                                                                        <% } else { %>
+                                                                                                <div class="col text-center">
+                                                                                                               brak
+                                                                                                </div>
+                                                                                                <% } %>
+
+
+
+                        </div>
+
+
+                        <%})%>
+                                <%numercol=1%>
+                                        <%})%>
+
+        <hr class="mt-lg-5">
+        <div class="row bg-info border rounded">
+                        <div class="col">
+                                <h5>
+                                Archiwum lekow pozyczonych przez p. <%=osoba%>
+                                </h5>
+                        </div>
+                </div>
 
         
-        <%})%>
-        <%numercol=1%>
-        <%})%>
-
 
 </div>
